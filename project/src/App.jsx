@@ -1,20 +1,22 @@
+import Navbar from "./components/Navbar";
+
 function App() {
   return (
-    <div className="container py-5">
+    <>
+      <Navbar />
 
-      <div className="text-center">
+      <main className="container py-5">
+        <div className="text-center py-5">
+          <h1 className="fw-bold">
+            BagNest
+          </h1>
 
-        <h1 className="fw-bold">
-          BagNest
-        </h1>
-
-        <p className="text-muted">
-          Travel light. Store smart.
-        </p>
-
-      </div>
-
-    </div>
+          <p className="text-muted">
+            Travel light. Store smart.
+          </p>
+        </div>
+      </main>
+    </>
   );
 }
 
