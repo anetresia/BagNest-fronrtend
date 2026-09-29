@@ -1,18 +1,20 @@
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import AppRoutes from "./routes/AppRoutes";
-
 function App() {
   return (
-    <>
-      <Navbar />
+    <div className="container py-5">
 
-      <main>
-        <AppRoutes />
-      </main>
+      <div className="text-center">
 
-      <Footer />
-    </>
+        <h1 className="fw-bold">
+          BagNest
+        </h1>
+
+        <p className="text-muted">
+          Travel light. Store smart.
+        </p>
+
+      </div>
+
+    </div>
   );
 }
 
