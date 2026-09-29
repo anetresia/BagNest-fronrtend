@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 
+import storageData from "../../data/storageData";
+import StorageCard from "../../components/StorageCard";
+
 function LandingPage() {
   return (
     <main className="landing-page">
@@ -61,7 +64,6 @@ function LandingPage() {
               </div>
             </div>
 
-
             {/* Right Visual */}
             <div className="col-lg-5">
               <div className="hero-visual">
@@ -84,7 +86,6 @@ function LandingPage() {
                   <div className="luggage-wheel right"></div>
                 </div>
 
-
                 <div className="storage-floating-card">
                   <span className="floating-dot"></span>
 
@@ -93,7 +94,6 @@ function LandingPage() {
                     <small>Near your destination</small>
                   </div>
                 </div>
-
 
                 <div className="location-floating-card">
                   <strong>12+</strong>
@@ -141,6 +141,56 @@ function LandingPage() {
                 <span>Booking Access</span>
               </div>
             </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* Explore Storage Preview */}
+      <section className="storage-preview-section">
+        <div className="container">
+
+          <div className="section-heading-row">
+
+            <div>
+              <span className="section-eyebrow">
+                FIND A PLACE
+              </span>
+
+              <h2 className="section-title">
+                Store your bags.
+                <br />
+                Explore without limits.
+              </h2>
+
+              <p className="section-description">
+                Discover convenient storage locations near
+                popular travel spots and book a place for your bags.
+              </p>
+            </div>
+
+            <Link
+              to="/explore-storage"
+              className="view-all-link"
+            >
+              View all storage →
+            </Link>
+
+          </div>
+
+
+          <div className="row g-4">
+
+            {storageData.map((storage) => (
+              <div
+                className="col-md-6 col-lg-4"
+                key={storage.id}
+              >
+                <StorageCard storage={storage} />
+              </div>
+            ))}
 
           </div>
 
