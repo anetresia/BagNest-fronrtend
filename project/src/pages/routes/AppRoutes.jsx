@@ -1,117 +1,44 @@
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
-// import LandingPage from "../pages/public/LandingPage";
-// import Login from "../pages/public/Login";
-// import Register from "../pages/public/Register";
+import LandingPage from "../public/LandingPage";
+import Login from "../public/Login";
+import Register from "../public/Register";
+import ExploreStorage from "../traveller/ExploreStorage";
+import StorageDetails from "../traveller/StorageDetails";
+import Booking from "../traveller/Booking";
+import TravellerDashboard from "../traveller/TravellerDashboard";
+import MyBookings from "../traveller/MyBookings";
+import TravellerProfile from "../traveller/TravellerProfile";
+import Notifications from "../traveller/Notifications";
+import PartnerDashboard from "../partner/PartnerDashboard";
+import ManageStorage from "../partner/ManageStorage";
+import PartnerBookings from "../partner/PartnerBookings";
+import Reports from "../partner/Reports";
+import PartnerProfile from "../partner/PartnerProfile";
+import PartnerNotifications from "../partner/PartnerNotifications";
 
-// import TravellerDashboard from "../pages/traveller/TravellerDashboard";
-// import ExploreStorage from "../pages/traveller/ExploreStorage";
-// import StorageDetails from "../pages/traveller/StorageDetails";
-// import Booking from "../pages/traveller/Booking";
-// import MyBookings from "../pages/traveller/MyBookings";
-// import BookingDetails from "../pages/traveller/BookingDetails";
-// import Profile from "../pages/traveller/Profile";
+function AppRoutes() {
+  return (
+    <Routes>
+        {/* path=url path define panrom, element=entha page show aaganum endu sollurom */}
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/explore-storage" element={<ExploreStorage />}/>
+      <Route path="/storage/:id" element={<StorageDetails />}/>
+      <Route path="/booking/:id" element={<Booking />}/>
+      <Route path="/traveller-dashboard" element={<TravellerDashboard />}/>
+      <Route path="/my-bookings" element={<MyBookings />}/>
+      <Route path="/traveller-profile" element={<TravellerProfile />}/>
+      <Route path="/notifications" element={<Notifications />}/>
+      <Route path="/partner-dashboard" element={<PartnerDashboard />}/>
+      <Route path="/manage-storage" element={<ManageStorage />}/>
+      <Route path="/partner-bookings" element={<PartnerBookings />}/>
+      <Route path="/reports" element={<Reports />}/>
+      <Route path="/partner-profile" element={<PartnerProfile />}/>
+      <Route path="/partner-notifications" element={<PartnerNotifications />}/>
+    </Routes>
+  );
+}
 
-// import PartnerDashboard from "../pages/partner/PartnerDashboard";
-// import ManageStorage from "../pages/partner/ManageStorage";
-// import StorageForm from "../pages/partner/StorageForm";
-// import PartnerBookings from "../pages/partner/PartnerBookings";
-// import CheckInOut from "../pages/partner/CheckInOut";
-// import CSVImport from "../pages/partner/CSVImport";
-// import Reports from "../pages/partner/Reports";
-
-// function AppRoutes() {
-//   return (
-//     <BrowserRouter>
-//       <Routes>
-
-//         {/* Public Routes */}
-
-//         <Route path="/" element={<LandingPage />} />
-
-//         <Route path="/login" element={<Login />} />
-
-//         <Route path="/register" element={<Register />} />
-
-
-//         {/* Traveller Routes */}
-
-//         <Route
-//           path="/traveller-dashboard"
-//           element={<TravellerDashboard />}
-//         />
-
-//         <Route
-//           path="/explore-storage"
-//           element={<ExploreStorage />}
-//         />
-
-//         <Route
-//           path="/storage/:id"
-//           element={<StorageDetails />}
-//         />
-
-//         <Route
-//           path="/booking/:id"
-//           element={<Booking />}
-//         />
-
-//         <Route
-//           path="/my-bookings"
-//           element={<MyBookings />}
-//         />
-
-//         <Route
-//           path="/booking-details/:id"
-//           element={<BookingDetails />}
-//         />
-
-//         <Route
-//           path="/profile"
-//           element={<Profile />}
-//         />
-
-
-//         {/* Partner Routes */}
-
-//         <Route
-//           path="/partner-dashboard"
-//           element={<PartnerDashboard />}
-//         />
-
-//         <Route
-//           path="/manage-storage"
-//           element={<ManageStorage />}
-//         />
-
-//         <Route
-//           path="/storage-form"
-//           element={<StorageForm />}
-//         />
-
-//         <Route
-//           path="/partner-bookings"
-//           element={<PartnerBookings />}
-//         />
-
-//         <Route
-//           path="/check-in-out"
-//           element={<CheckInOut />}
-//         />
-
-//         <Route
-//           path="/csv-import"
-//           element={<CSVImport />}
-//         />
-
-//         <Route
-//           path="/reports"
-//           element={<Reports />}
-//         />
-
-//       </Routes>
-//     </BrowserRouter>
-//   );
-// }
-
-// export default AppRoutes;
+export default AppRoutes;

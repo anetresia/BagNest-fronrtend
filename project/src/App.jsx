@@ -1,14 +1,13 @@
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import LandingPage from "./pages/public/LandingPage";
-
+import AppRoutes from "./pages/routes/AppRoutes";
 
 function App() {
   return (
     <>
       <Navbar />
 
-      <LandingPage />
+      <AppRoutes />
 
       <Footer />
     </>

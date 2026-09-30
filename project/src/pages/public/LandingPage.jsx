@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import storageData from "../../data/storageData";
 import StorageCard from "../../components/StorageCard";
 
+import heroImage from "../../assets/hero-illustration.jpg";
+
 function LandingPage() {
   return (
     <main className="landing-page">
@@ -10,10 +12,12 @@ function LandingPage() {
       {/* Hero */}
       <section className="hero-section">
         <div className="container">
+
           <div className="row align-items-center g-5">
 
             {/* Left Content */}
             <div className="col-lg-7">
+
               <span className="hero-badge">
                 Smart luggage storage network
               </span>
@@ -31,6 +35,7 @@ function LandingPage() {
               </p>
 
               <div className="hero-actions">
+
                 <Link
                   to="/explore-storage"
                   className="btn btn-hero-primary"
@@ -44,9 +49,11 @@ function LandingPage() {
                 >
                   Become a Partner
                 </Link>
+
               </div>
 
               <div className="hero-trust">
+
                 <div>
                   <strong>Safe</strong>
                   <span>Verified locations</span>
@@ -61,49 +68,29 @@ function LandingPage() {
                   <strong>Flexible</strong>
                   <span>Pay for what you use</span>
                 </div>
+
               </div>
+
             </div>
 
-            {/* Right Visual */}
+
+            {/* Right Image */}
             <div className="col-lg-5">
-              <div className="hero-visual">
 
-                <div className="visual-circle"></div>
+              <div className="hero-image-box">
 
-                <div className="luggage-card">
-                  <div className="luggage-handle"></div>
-
-                  <div className="luggage-body">
-                    <div className="luggage-label">
-                      BAG
-                    </div>
-
-                    <div className="luggage-line"></div>
-                    <div className="luggage-line short"></div>
-                  </div>
-
-                  <div className="luggage-wheel left"></div>
-                  <div className="luggage-wheel right"></div>
-                </div>
-
-                <div className="storage-floating-card">
-                  <span className="floating-dot"></span>
-
-                  <div>
-                    <strong>Storage Available</strong>
-                    <small>Near your destination</small>
-                  </div>
-                </div>
-
-                <div className="location-floating-card">
-                  <strong>12+</strong>
-                  <span>Storage spots</span>
-                </div>
+                <img
+                  src={heroImage}
+                  alt="BagNest luggage storage"
+                  className="hero-image"
+                />
 
               </div>
+
             </div>
 
           </div>
+
         </div>
       </section>
 
@@ -155,6 +142,7 @@ function LandingPage() {
           <div className="section-heading-row">
 
             <div>
+
               <span className="section-eyebrow">
                 FIND A PLACE
               </span>
@@ -169,6 +157,7 @@ function LandingPage() {
                 Discover convenient storage locations near
                 popular travel spots and book a place for your bags.
               </p>
+
             </div>
 
             <Link

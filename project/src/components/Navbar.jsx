@@ -1,95 +1,118 @@
-import { Link, NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import {Link,useLocation,useNavigate,} from "react-router-dom";
 
 function Navbar() {
+  // Logout aana Login page-ku poganum
+  const navigate = useNavigate();
+
+  // Current page/path-ah check pannrom
+  const location = useLocation();
+
+  // User login pannirukkaa-nu temporary-aa check pannrom
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem("isLoggedIn") === "true"
+  );
+
+  // Login / logout navigation change aagumbothu
+  // Navbar login state-ah update pannrom
+  useEffect(() => {
+    setIsLoggedIn(
+      localStorage.getItem("isLoggedIn") === "true"
+    );
+  }, [location.pathname]);
+
+  // Logout handle pannrom
+  function handleLogout() {
+    // Logout confirmation kekkrom
+    const confirmLogout = window.confirm(
+      "Are you sure you want to logout?"
+    );
+
+    // User OK kudutha
+    if (confirmLogout) {
+
+      // Login state remove pannrom
+      localStorage.removeItem("isLoggedIn");
+
+      // User type remove pannrom
+      localStorage.removeItem("userType");
+
+      // Navbar-la immediately Login / Get Started varanum
+      setIsLoggedIn(false);
+
+      // Login page-ku pogum
+      navigate("/login");
+    }
+  }
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top border-bottom">
-      <div className="container py-2">
+    <nav className="navbar border-bottom">
 
-        {/* Brand */}
+      <div className="container">
+
+        {/* BagNest logo */}
         <Link
+          className="navbar-brand fw-bold"
           to="/"
-          className="navbar-brand d-flex align-items-center gap-2"
         >
-          <span className="brand-mark">
-            B
-          </span>
-
-          <span className="brand-name">
-            Bag<span>Nest</span>
-          </span>
+          BagNest
         </Link>
 
+        {/* Navigation links */}
+        <div className="d-flex gap-3 align-items-center">
 
-        {/* Mobile Toggle */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#bagNestNavbar"
-          aria-controls="bagNestNavbar"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+          {/* Home */}
+          <Link
+            className="nav-link"
+            to="/"
+          >
+            Home
+          </Link>
 
+          {/* Explore Storage */}
+          <Link
+            className="nav-link"
+            to="/explore-storage"
+          >
+            Explore Storage
+          </Link>
 
-        {/* Navigation */}
-        <div
-          className="collapse navbar-collapse"
-          id="bagNestNavbar"
-        >
-          <ul className="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-
-            <li className="nav-item">
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  `nav-link ${isActive ? "active" : ""}`
-                }
-              >
-                Home
-              </NavLink>
-            </li>
-
-
-            <li className="nav-item">
-              <NavLink
-                to="/explore-storage"
-                className={({ isActive }) =>
-                  `nav-link ${isActive ? "active" : ""}`
-                }
-              >
-                Explore Storage
-              </NavLink>
-            </li>
-
-
-            <li className="nav-item">
-              <NavLink
+          {/* Login pannala-na */}
+          {!isLoggedIn ? (
+            <>
+              {/* Login */}
+              <Link
+                className="nav-link"
                 to="/login"
-                className={({ isActive }) =>
-                  `nav-link ${isActive ? "active" : ""}`
-                }
               >
                 Login
-              </NavLink>
-            </li>
+              </Link>
 
-
-            <li className="nav-item ms-lg-2 mt-2 mt-lg-0">
+              {/* Register */}
               <Link
+                className="btn btn-primary-custom"
                 to="/register"
-                className="btn btn-primary-custom px-4"
               >
                 Get Started
               </Link>
-            </li>
+            </>
+          ) : (
+            <>
+              {/* Login pannirundha Logout mattum */}
+              <button
+                type="button"
+                className="btn btn-primary-custom"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </>
+          )}
 
-          </ul>
         </div>
 
       </div>
+
     </nav>
   );
 }

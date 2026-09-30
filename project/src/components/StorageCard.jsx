@@ -1,65 +1,80 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function StorageCard({ storage }) {
+  const navigate = useNavigate();
+
+  // Storage details paakka login check pannrom
+  function handleViewStorage() {
+    const isLoggedIn =
+      localStorage.getItem("isLoggedIn") === "true";
+
+    // Login pannala na Login page-ku pogum
+    if (!isLoggedIn) {
+      navigate("/login");
+      return;
+    }
+
+    // Login aagirundha storage details-ku pogum
+    navigate(`/storage/${storage.id}`);
+  }
+
   return (
-    <article className="storage-card">
+    <div className="storage-card">
 
       <div className="storage-card-top">
+
         <span className="storage-type">
-          {storage.type}
+          Storage
         </span>
 
         <span className="storage-rating">
-          ★ {storage.rating}
+          ★ {storage.rating || "N/A"}
         </span>
-      </div>
 
+      </div>
 
       <div className="storage-placeholder">
-        <span>BAG</span>
+        BAG
       </div>
-
 
       <div className="storage-card-body">
 
         <h3>{storage.name}</h3>
 
         <p className="storage-location">
-          {storage.location}
+          {storage.city}
         </p>
-
 
         <div className="storage-meta">
 
           <div>
-            <span>Available</span>
+            <span>Price</span>
 
             <strong>
-              {storage.available} bags
+              LKR {storage.price_per_bag} / bag
             </strong>
           </div>
 
-          <div className="text-end">
-            <span>From</span>
+          <div>
+            <span>Capacity</span>
 
             <strong>
-              Rs. {storage.price}
+              {storage.capacity} bags
             </strong>
           </div>
 
         </div>
 
-
-        <Link
-          to={`/storage/${storage.id}`}
+        <button
+          type="button"
           className="storage-card-button"
+          onClick={handleViewStorage}
         >
           View Storage
-        </Link>
+        </button>
 
       </div>
-
-    </article>
+    </div>
   );
 }
 
